@@ -23,10 +23,11 @@ class ChromeRender {
    * @return {Promise.<ChromeRender>}
    */
   static async new(params = {}) {
-    const { maxTab, chromeRunnerOptions } = params;
+    const { maxTab, port, chromeRunnerOptions } = params;
     const chromeRender = new ChromeRender();
     chromeRender.chromePoll = await ChromePoll.new({
       maxTab,
+      port,
       protocols: ['Page', 'DOM', 'Network', 'Runtime', 'Emulation'],
       chromeRunnerOptions
     });
